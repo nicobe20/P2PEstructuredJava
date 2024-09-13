@@ -55,12 +55,39 @@ public class Node {
     public void join(Node newNode){
         //Task ----> implement chord logic or any logic to make succesor and predecessor
         //if we are to do a ring like chord we also have to implemente the position of the node to be in the correct position of the circle 
+        if (this.succesor == null){
+            this.succesor = newNode;
+            this.predecessor = newNode;
+            newNode.setPredecessor(this);
+            newNode.setSuccesorNode(this);
 
+        }
+        else {
+            //Chord impl for correct node position this shit is very *fucking* confusing
+            
+            Node succNode = findSuccesorNode(newNode.getIdNode());//succNode is the value or id of the newNode to join the network being pass to the method of findSuccesorNode
+            Node predNode = succNode.getPredecessorNode(); //just returns the predecessor node of the new node
+
+            //fuck this
+            newNode.setPredecessor(predNode);
+            newNode.setSuccesorNode(succNode);
+            succNode.setPredecessor(newNode);
+            predNode.setSuccesorNode(newNode);
+
+        }
     }
 
     public Node findSuccesorNode(String Key){
         //implement logic to finde succesor node 
-       return succesor; //Placeholder 
+        if (this.idNode.compareTo(Key) < 0 
+                    && (this.succesor.getIdNode().compareTo(Key) >= 0)){   //the compareTo returns 0 when the two strings compared are exactly equal.
+           
+                          return this.succesor;
+
+        }else{
+            return this.succesor.findSuccesorNode(Key); //recursivley find the succesor.
+
+        }
     }
 
 
