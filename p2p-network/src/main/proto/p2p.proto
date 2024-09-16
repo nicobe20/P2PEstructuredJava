@@ -3,21 +3,18 @@ syntax = "proto3";
 option java_package = "com.example.p2pnetwork";
 option java_outer_classname = "P2PServiceProto";
 
-//do not comment in this class with /**/
-
+// gRPC Service definition
 service P2PService {
-    // RPC to simulate file transfer
-    rpc simulateFileTransfer (FileTransferRequest) returns (FileTransferResponse);
+    // RPC para simular el ping entre nodos
+    rpc ping (PingRequest) returns (PingResponse);
 }
 
-message FileTransferRequest {
-    string filename = 1;       // Name of the "file"
-    string fileSize = 2;       // Size of the "file" (for simulation purposes)
-    string senderNode = 3;     // ID of the node sending the file
-    string receiverNode = 4;   // ID of the node receiving the file
+// Message definitions
+message PingRequest {
+    string senderNode = 1;
+    string receiverNode = 2;
 }
 
-message FileTransferResponse {
-    string status = 1;         // Status of the simulated transfer
-    string details = 2;        // Additional details of the transfer
+message PingResponse {
+    string status = 1;
 }

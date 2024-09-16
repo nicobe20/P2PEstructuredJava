@@ -1,72 +1,99 @@
 package com.example.p2pnetwork;
-import java.security.MessageDigest;
 
 import com.example.p2pnetwork.P2PServiceProto.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
 
+import java.util.Scanner;
 
 public class P2PClient {
 
-    public static void main(String[] args) {
+    private final ManagedChannel channel;
+    private final P2PServiceGrpc.P2PServiceBlockingStub stub;
 
-            // Set up a channel to connect to the gRPC server
-            ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
-                    .usePlaintext()
-                    .build();
-    
-            // Create a stub to interact with the service
-            P2PServiceGrpc.P2PServiceBlockingStub stub = P2PServiceGrpc.newBlockingStub(channel);
-    
-            // Create a file transfer request
-            FileTransferRequest request = FileTransferRequest.newBuilder()
-                    .setFilename("sample_file.txt")
-                    .setFileSize("5MB")
-                    .setSenderNode("Node_A")
-                    .setReceiverNode("Node_B")
-                    .build();
-    
-            // Send the request to the server and receive a response
-            FileTransferResponse response = stub.simulateFileTransfer(request);
-    
-            // Print the response details
-            System.out.println("File Transfer Status: " + response.getStatus());
-            System.out.println("Details: " + response.getDetails());
-    
-            // Close the channel after communication
-            channel.shutdown();
-
-
-
-        /* 
-        // Create a channel to connect to the server
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
+    // Constructor que establece un canal gRPC con el nodo
+    public P2PClient(String nodeId) {
+        // Suponiendo que cada nodo está en una dirección conocida.
+        this.channel = ManagedChannelBuilder.forTarget("localhost:8080") // Puedes ajustar el host/puerto
                 .usePlaintext()
                 .build();
+        this.stub = P2PServiceGrpc.newBlockingStub(channel);
+    }
 
-        // Create a blocking stub for the P2PService
-        P2PServiceGrpc.P2PServiceBlockingStub stub = P2PServiceGrpc.newBlockingStub(channel);
-
-        // Create a request
-        MessageRequest request = MessageRequest.newBuilder()
-                .setMessage("Testing message ")
+    // Método para hacer ping a otro nodo
+    public void ping(String senderNodeId, String receiverNodeId) {
+        PingRequest request = PingRequest.newBuilder()
+                .setSenderNode(senderNodeId)
+                .setReceiverNode(receiverNodeId)
                 .build();
 
-        // Send the request and receive a response
-        MessageResponse response = stub.sendMessage(request);
-       
+        try {
+            PingResponse response = stub.ping(request);
+            System.out.println("Respuesta del ping: " + response.getStatus());
+        } catch (StatusRuntimeException e) {
+            System.err.println("Error durante el ping: " + e.getStatus());
+        }
+    }
 
-        // Print the response
-        
-            System.out.println("Response from server: " + response.getConfirmation());
-        
-        
-        // Shut down the channel
+    // Método para obtener información de un nodo
+    public void getNodeInfo(String nodeId) {
+        NodeInfoRequest request = NodeInfoRequest.newBuilder()
+                .setNodeId(nodeId)
+                .build();
+
+        try {
+            NodeInfoResponse response = stub.getNodeInfo(request);
+            System.out.println("Nodo: " + response.getNodeId());
+            System.out.println("Sucesor: " + response.getSuccessorId());
+            System.out.println("Predecesor: " + response.getPredecessorId());
+        } catch (StatusRuntimeException e) {
+            System.err.println("Error al obtener información del nodo: " + e.getStatus());
+        }
+    }
+
+    // Método para cerrar el canal gRPC
+    public void shutdown() {
         channel.shutdown();
+    }
 
-        */
+    // Consola interactiva para el cliente
+    public static void runClientConsole(P2PClient client, String nodeId) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Ingrese un comando (ping/admin/exit): ");
+            String command = scanner.nextLine();
+            if (command.equalsIgnoreCase("exit")) {
+                break;
+            } else if (command.equalsIgnoreCase("ping")) {
+                System.out.println("Ingrese el ID del nodo destino para hacer ping: ");
+                String targetNodeId = scanner.nextLine();
+                client.ping(nodeId, targetNodeId);
+            } else if (command.equalsIgnoreCase("admin")) {
+                System.out.println("Ingrese el ID del nodo que desea administrar: ");
+                String targetNodeId = scanner.nextLine();
+                client.getNodeInfo(targetNodeId);
+            } else {
+                System.out.println("Comando no reconocido. Intente 'ping', 'admin' o 'exit'.");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar el ID del nodo actual
+        System.out.println("Ingrese el ID de este nodo (cliente): ");
+        String nodeId = scanner.nextLine();
+
+        // Crear el cliente para conectarse al nodo
+        P2PClient client = new P2PClient(nodeId);
+
+        // Ejecutar la consola interactiva
+        runClientConsole(client, nodeId);
+
+        // Cerrar el cliente al finalizar
+        client.shutdown();
+        System.out.println("Cliente desconectado.");
     }
 }
-
-
-

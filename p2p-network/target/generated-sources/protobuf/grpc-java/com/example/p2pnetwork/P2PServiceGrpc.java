@@ -3,6 +3,9 @@ package com.example.p2pnetwork;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * gRPC Service definition
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.40.1)",
@@ -15,35 +18,35 @@ public final class P2PServiceGrpc {
   public static final String SERVICE_NAME = "P2PService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.FileTransferRequest,
-      com.example.p2pnetwork.P2PServiceProto.FileTransferResponse> getSimulateFileTransferMethod;
+  private static volatile io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.PingRequest,
+      com.example.p2pnetwork.P2PServiceProto.PingResponse> getPingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "simulateFileTransfer",
-      requestType = com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.class,
-      responseType = com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "ping",
+      requestType = com.example.p2pnetwork.P2PServiceProto.PingRequest.class,
+      responseType = com.example.p2pnetwork.P2PServiceProto.PingResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.FileTransferRequest,
-      com.example.p2pnetwork.P2PServiceProto.FileTransferResponse> getSimulateFileTransferMethod() {
-    io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.FileTransferRequest, com.example.p2pnetwork.P2PServiceProto.FileTransferResponse> getSimulateFileTransferMethod;
-    if ((getSimulateFileTransferMethod = P2PServiceGrpc.getSimulateFileTransferMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.PingRequest,
+      com.example.p2pnetwork.P2PServiceProto.PingResponse> getPingMethod() {
+    io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.PingRequest, com.example.p2pnetwork.P2PServiceProto.PingResponse> getPingMethod;
+    if ((getPingMethod = P2PServiceGrpc.getPingMethod) == null) {
       synchronized (P2PServiceGrpc.class) {
-        if ((getSimulateFileTransferMethod = P2PServiceGrpc.getSimulateFileTransferMethod) == null) {
-          P2PServiceGrpc.getSimulateFileTransferMethod = getSimulateFileTransferMethod =
-              io.grpc.MethodDescriptor.<com.example.p2pnetwork.P2PServiceProto.FileTransferRequest, com.example.p2pnetwork.P2PServiceProto.FileTransferResponse>newBuilder()
+        if ((getPingMethod = P2PServiceGrpc.getPingMethod) == null) {
+          P2PServiceGrpc.getPingMethod = getPingMethod =
+              io.grpc.MethodDescriptor.<com.example.p2pnetwork.P2PServiceProto.PingRequest, com.example.p2pnetwork.P2PServiceProto.PingResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "simulateFileTransfer"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ping"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.getDefaultInstance()))
+                  com.example.p2pnetwork.P2PServiceProto.PingRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new P2PServiceMethodDescriptorSupplier("simulateFileTransfer"))
+                  com.example.p2pnetwork.P2PServiceProto.PingResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new P2PServiceMethodDescriptorSupplier("ping"))
               .build();
         }
       }
     }
-    return getSimulateFileTransferMethod;
+    return getPingMethod;
   }
 
   /**
@@ -91,33 +94,39 @@ public final class P2PServiceGrpc {
   }
 
   /**
+   * <pre>
+   * gRPC Service definition
+   * </pre>
    */
   public static abstract class P2PServiceImplBase implements io.grpc.BindableService {
 
     /**
      * <pre>
-     * RPC to simulate file transfer
+     * RPC para simular el ping entre nodos
      * </pre>
      */
-    public void simulateFileTransfer(com.example.p2pnetwork.P2PServiceProto.FileTransferRequest request,
-        io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.FileTransferResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSimulateFileTransferMethod(), responseObserver);
+    public void ping(com.example.p2pnetwork.P2PServiceProto.PingRequest request,
+        io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.PingResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPingMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getSimulateFileTransferMethod(),
+            getPingMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                com.example.p2pnetwork.P2PServiceProto.FileTransferRequest,
-                com.example.p2pnetwork.P2PServiceProto.FileTransferResponse>(
-                  this, METHODID_SIMULATE_FILE_TRANSFER)))
+                com.example.p2pnetwork.P2PServiceProto.PingRequest,
+                com.example.p2pnetwork.P2PServiceProto.PingResponse>(
+                  this, METHODID_PING)))
           .build();
     }
   }
 
   /**
+   * <pre>
+   * gRPC Service definition
+   * </pre>
    */
   public static final class P2PServiceStub extends io.grpc.stub.AbstractAsyncStub<P2PServiceStub> {
     private P2PServiceStub(
@@ -133,17 +142,20 @@ public final class P2PServiceGrpc {
 
     /**
      * <pre>
-     * RPC to simulate file transfer
+     * RPC para simular el ping entre nodos
      * </pre>
      */
-    public void simulateFileTransfer(com.example.p2pnetwork.P2PServiceProto.FileTransferRequest request,
-        io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.FileTransferResponse> responseObserver) {
+    public void ping(com.example.p2pnetwork.P2PServiceProto.PingRequest request,
+        io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.PingResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getSimulateFileTransferMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getPingMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
   /**
+   * <pre>
+   * gRPC Service definition
+   * </pre>
    */
   public static final class P2PServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<P2PServiceBlockingStub> {
     private P2PServiceBlockingStub(
@@ -159,16 +171,19 @@ public final class P2PServiceGrpc {
 
     /**
      * <pre>
-     * RPC to simulate file transfer
+     * RPC para simular el ping entre nodos
      * </pre>
      */
-    public com.example.p2pnetwork.P2PServiceProto.FileTransferResponse simulateFileTransfer(com.example.p2pnetwork.P2PServiceProto.FileTransferRequest request) {
+    public com.example.p2pnetwork.P2PServiceProto.PingResponse ping(com.example.p2pnetwork.P2PServiceProto.PingRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getSimulateFileTransferMethod(), getCallOptions(), request);
+          getChannel(), getPingMethod(), getCallOptions(), request);
     }
   }
 
   /**
+   * <pre>
+   * gRPC Service definition
+   * </pre>
    */
   public static final class P2PServiceFutureStub extends io.grpc.stub.AbstractFutureStub<P2PServiceFutureStub> {
     private P2PServiceFutureStub(
@@ -184,17 +199,17 @@ public final class P2PServiceGrpc {
 
     /**
      * <pre>
-     * RPC to simulate file transfer
+     * RPC para simular el ping entre nodos
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.example.p2pnetwork.P2PServiceProto.FileTransferResponse> simulateFileTransfer(
-        com.example.p2pnetwork.P2PServiceProto.FileTransferRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.example.p2pnetwork.P2PServiceProto.PingResponse> ping(
+        com.example.p2pnetwork.P2PServiceProto.PingRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getSimulateFileTransferMethod(), getCallOptions()), request);
+          getChannel().newCall(getPingMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_SIMULATE_FILE_TRANSFER = 0;
+  private static final int METHODID_PING = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -213,9 +228,9 @@ public final class P2PServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SIMULATE_FILE_TRANSFER:
-          serviceImpl.simulateFileTransfer((com.example.p2pnetwork.P2PServiceProto.FileTransferRequest) request,
-              (io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.FileTransferResponse>) responseObserver);
+        case METHODID_PING:
+          serviceImpl.ping((com.example.p2pnetwork.P2PServiceProto.PingRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.PingResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -278,7 +293,7 @@ public final class P2PServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new P2PServiceFileDescriptorSupplier())
-              .addMethod(getSimulateFileTransferMethod())
+              .addMethod(getPingMethod())
               .build();
         }
       }

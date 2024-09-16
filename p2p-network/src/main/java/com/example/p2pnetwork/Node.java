@@ -1,95 +1,110 @@
 package com.example.p2pnetwork;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-
-//Class that represents each node in the network
 public class Node {
-    //Node class atributes 
+
     private String idNode;
-    private Node succesor;
+    private Node successor;
     private Node predecessor;
-    private DHT dhtTable;
+    private static List<Node> nodeList = new ArrayList<>();
 
-    //Constructor for node
-    public Node(String Id_Node){
-        
-        String macAddr = javaUtil.getMacAddr();
-
-        this.idNode = idNode;
-
-        this.dhtTable = new DHT();
+    // Constructor que asigna un ID aleatorio automáticamente
+    public Node() {
+        this.idNode = generateRandomID();
+        this.successor = this;
+        this.predecessor = this;
+        nodeList.add(this); // Registrar el nodo en la red
+        System.out.println("Node with ID: " + this.idNode + " has joined the network.");
     }
 
-    //Methods(getters and setters)
+    // Generar un ID aleatorio
+    private String generateRandomID() {
+        return UUID.randomUUID().toString();
+    }
 
-    //getters
-    public String getIdNode(){
+    public String getIdNode() {
         return idNode;
     }
 
-    public Node getSuccesorNode(){
-        return succesor;    
+    public Node getSuccessor() {
+        return successor;
     }
 
-    public Node getPredecessorNode(){
+    public Node getPredecessor() {
         return predecessor;
     }
 
-    public DHT getdhtTable(){
-        return dhtTable;
-    } 
-
-    //Setters for succesor and predecessor 
-
-    public void setSuccesorNode(Node succesor){
-        this.succesor = succesor;
+    public void setSuccessor(Node successor) {
+        this.successor = successor;
     }
 
-    public void setPredecessor(Node predecessor){
+    public void setPredecessor(Node predecessor) {
         this.predecessor = predecessor;
     }
 
-    //Method to join new nodes
-
-    public void join(Node newNode){
-        //Task ----> implement chord logic or any logic to make succesor and predecessor
-        //if we are to do a ring like chord we also have to implemente the position of the node to be in the correct position of the circle 
-        if (this.succesor == null){
-            this.succesor = newNode;
+    // Unir un nuevo nodo a la red y actualizar sucesores/predecesores
+    public void joinNetwork(Node newNode) {
+        if (this.successor == this && this.predecessor == this) {
+            // Si este es el único nodo en la red, el nuevo nodo será su sucesor y predecesor
+            this.successor = newNode;
             this.predecessor = newNode;
             newNode.setPredecessor(this);
-            newNode.setSuccesorNode(this);
+            newNode.setSuccessor(this);
+        } else {
+            Node successorNode = findSuccessor(newNode.getIdNode());
+            Node predecessorNode = successorNode.getPredecessor();
 
+            newNode.setPredecessor(predecessorNode);
+            newNode.setSuccessor(successorNode);
+            predecessorNode.setSuccessor(newNode);
+            successorNode.setPredecessor(newNode);
         }
-        else {
-            //Chord impl for correct node position this shit is very *fucking* confusing
-            
-            Node succNode = findSuccesorNode(newNode.getIdNode());//succNode is the value or id of the newNode to join the network being pass to the method of findSuccesorNode
-            Node predNode = succNode.getPredecessorNode(); //just returns the predecessor node of the new node
+        nodeList.add(newNode);
+        System.out.println("Node with ID: " + newNode.getIdNode() + " has joined the network.");
+    }
 
-            //fuck this
-            newNode.setPredecessor(predNode);
-            newNode.setSuccesorNode(succNode);
-            succNode.setPredecessor(newNode);
-            predNode.setSuccesorNode(newNode);
-
+    // Encontrar el sucesor para un nodo con una ID específica
+    public Node findSuccessor(String key) {
+        if (this.successor == null || (this.idNode.compareTo(key) < 0 && this.successor.getIdNode().compareTo(key) >= 0)) {
+            return this;
+        } else {
+            return this.successor.findSuccessor(key);
         }
     }
 
-    public Node findSuccesorNode(String Key){
-        //implement logic to finde succesor node 
-        if (this.idNode.compareTo(Key) < 0 
-                    && (this.succesor.getIdNode().compareTo(Key) >= 0)){   //the compareTo returns 0 when the two strings compared are exactly equal.
-           
-                          return this.succesor;
-
-        }else{
-            return this.succesor.findSuccesorNode(Key); //recursivley find the succesor.
-
+    // Dejar la red y actualizar sucesores/predecesores
+    public void leaveNetwork() {
+        if (this.successor != null && this.predecessor != null && this.successor != this) {
+            this.successor.setPredecessor(this.predecessor);
+            this.predecessor.setSuccessor(this.successor);
+            nodeList.remove(this);
+            System.out.println("Node with ID: " + this.idNode + " has left the network.");
+        } else {
+            // Si es el único nodo en la red
+            System.out.println("Node with ID: " + this.idNode + " es el único nodo en la red y no puede dejar la red.");
         }
     }
 
+    // Mostrar el estado actual de la red
+    public static void printNetworkState() {
+        System.out.println("Current network state:");
+        for (Node node : nodeList) {
+            System.out.println("Node ID: " + node.getIdNode() +
+                               " | Predecessor: " + (node.getPredecessor() != null ? node.getPredecessor().getIdNode() : "null") +
+                               " | Successor: " + (node.getSuccessor() != null ? node.getSuccessor().getIdNode() : "null"));
+        }
+    }
 
-
+    // Encuentra un nodo por su ID
+    public static Node findNodeById(String id) {
+        for (Node node : nodeList) {
+            if (node.getIdNode().equals(id)) {
+                return node;
+            }
+        }
+        return null;
+    }
 }

@@ -14,105 +14,51 @@ public final class P2PServiceProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface FileTransferRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FileTransferRequest)
+  public interface PingRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PingRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * Name of the "file"
-     * </pre>
-     *
-     * <code>string filename = 1;</code>
-     * @return The filename.
-     */
-    java.lang.String getFilename();
-    /**
-     * <pre>
-     * Name of the "file"
-     * </pre>
-     *
-     * <code>string filename = 1;</code>
-     * @return The bytes for filename.
-     */
-    com.google.protobuf.ByteString
-        getFilenameBytes();
-
-    /**
-     * <pre>
-     * Size of the "file" (for simulation purposes)
-     * </pre>
-     *
-     * <code>string fileSize = 2;</code>
-     * @return The fileSize.
-     */
-    java.lang.String getFileSize();
-    /**
-     * <pre>
-     * Size of the "file" (for simulation purposes)
-     * </pre>
-     *
-     * <code>string fileSize = 2;</code>
-     * @return The bytes for fileSize.
-     */
-    com.google.protobuf.ByteString
-        getFileSizeBytes();
-
-    /**
-     * <pre>
-     * ID of the node sending the file
-     * </pre>
-     *
-     * <code>string senderNode = 3;</code>
+     * <code>string senderNode = 1;</code>
      * @return The senderNode.
      */
     java.lang.String getSenderNode();
     /**
-     * <pre>
-     * ID of the node sending the file
-     * </pre>
-     *
-     * <code>string senderNode = 3;</code>
+     * <code>string senderNode = 1;</code>
      * @return The bytes for senderNode.
      */
     com.google.protobuf.ByteString
         getSenderNodeBytes();
 
     /**
-     * <pre>
-     * ID of the node receiving the file
-     * </pre>
-     *
-     * <code>string receiverNode = 4;</code>
+     * <code>string receiverNode = 2;</code>
      * @return The receiverNode.
      */
     java.lang.String getReceiverNode();
     /**
-     * <pre>
-     * ID of the node receiving the file
-     * </pre>
-     *
-     * <code>string receiverNode = 4;</code>
+     * <code>string receiverNode = 2;</code>
      * @return The bytes for receiverNode.
      */
     com.google.protobuf.ByteString
         getReceiverNodeBytes();
   }
   /**
-   * Protobuf type {@code FileTransferRequest}
+   * <pre>
+   * Message definitions
+   * </pre>
+   *
+   * Protobuf type {@code PingRequest}
    */
-  public static final class FileTransferRequest extends
+  public static final class PingRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FileTransferRequest)
-      FileTransferRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:PingRequest)
+      PingRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FileTransferRequest.newBuilder() to construct.
-    private FileTransferRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PingRequest.newBuilder() to construct.
+    private PingRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FileTransferRequest() {
-      filename_ = "";
-      fileSize_ = "";
+    private PingRequest() {
       senderNode_ = "";
       receiverNode_ = "";
     }
@@ -121,7 +67,7 @@ public final class P2PServiceProto {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new FileTransferRequest();
+      return new PingRequest();
     }
 
     @java.lang.Override
@@ -129,7 +75,7 @@ public final class P2PServiceProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FileTransferRequest(
+    private PingRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -150,22 +96,10 @@ public final class P2PServiceProto {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              filename_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              fileSize_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
               senderNode_ = s;
               break;
             }
-            case 34: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               receiverNode_ = s;
@@ -192,117 +126,21 @@ public final class P2PServiceProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferRequest_descriptor;
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_PingRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferRequest_fieldAccessorTable
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_PingRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.class, com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.Builder.class);
+              com.example.p2pnetwork.P2PServiceProto.PingRequest.class, com.example.p2pnetwork.P2PServiceProto.PingRequest.Builder.class);
     }
 
-    public static final int FILENAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object filename_;
-    /**
-     * <pre>
-     * Name of the "file"
-     * </pre>
-     *
-     * <code>string filename = 1;</code>
-     * @return The filename.
-     */
-    @java.lang.Override
-    public java.lang.String getFilename() {
-      java.lang.Object ref = filename_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        filename_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * Name of the "file"
-     * </pre>
-     *
-     * <code>string filename = 1;</code>
-     * @return The bytes for filename.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFilenameBytes() {
-      java.lang.Object ref = filename_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        filename_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int FILESIZE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object fileSize_;
-    /**
-     * <pre>
-     * Size of the "file" (for simulation purposes)
-     * </pre>
-     *
-     * <code>string fileSize = 2;</code>
-     * @return The fileSize.
-     */
-    @java.lang.Override
-    public java.lang.String getFileSize() {
-      java.lang.Object ref = fileSize_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        fileSize_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * Size of the "file" (for simulation purposes)
-     * </pre>
-     *
-     * <code>string fileSize = 2;</code>
-     * @return The bytes for fileSize.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getFileSizeBytes() {
-      java.lang.Object ref = fileSize_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        fileSize_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int SENDERNODE_FIELD_NUMBER = 3;
+    public static final int SENDERNODE_FIELD_NUMBER = 1;
     private volatile java.lang.Object senderNode_;
     /**
-     * <pre>
-     * ID of the node sending the file
-     * </pre>
-     *
-     * <code>string senderNode = 3;</code>
+     * <code>string senderNode = 1;</code>
      * @return The senderNode.
      */
     @java.lang.Override
@@ -319,11 +157,7 @@ public final class P2PServiceProto {
       }
     }
     /**
-     * <pre>
-     * ID of the node sending the file
-     * </pre>
-     *
-     * <code>string senderNode = 3;</code>
+     * <code>string senderNode = 1;</code>
      * @return The bytes for senderNode.
      */
     @java.lang.Override
@@ -341,14 +175,10 @@ public final class P2PServiceProto {
       }
     }
 
-    public static final int RECEIVERNODE_FIELD_NUMBER = 4;
+    public static final int RECEIVERNODE_FIELD_NUMBER = 2;
     private volatile java.lang.Object receiverNode_;
     /**
-     * <pre>
-     * ID of the node receiving the file
-     * </pre>
-     *
-     * <code>string receiverNode = 4;</code>
+     * <code>string receiverNode = 2;</code>
      * @return The receiverNode.
      */
     @java.lang.Override
@@ -365,11 +195,7 @@ public final class P2PServiceProto {
       }
     }
     /**
-     * <pre>
-     * ID of the node receiving the file
-     * </pre>
-     *
-     * <code>string receiverNode = 4;</code>
+     * <code>string receiverNode = 2;</code>
      * @return The bytes for receiverNode.
      */
     @java.lang.Override
@@ -401,17 +227,11 @@ public final class P2PServiceProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getFilenameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, filename_);
-      }
-      if (!getFileSizeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, fileSize_);
-      }
       if (!getSenderNodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, senderNode_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, senderNode_);
       }
       if (!getReceiverNodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, receiverNode_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, receiverNode_);
       }
       unknownFields.writeTo(output);
     }
@@ -422,17 +242,11 @@ public final class P2PServiceProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getFilenameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, filename_);
-      }
-      if (!getFileSizeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, fileSize_);
-      }
       if (!getSenderNodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, senderNode_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, senderNode_);
       }
       if (!getReceiverNodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, receiverNode_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, receiverNode_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -444,15 +258,11 @@ public final class P2PServiceProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.example.p2pnetwork.P2PServiceProto.FileTransferRequest)) {
+      if (!(obj instanceof com.example.p2pnetwork.P2PServiceProto.PingRequest)) {
         return super.equals(obj);
       }
-      com.example.p2pnetwork.P2PServiceProto.FileTransferRequest other = (com.example.p2pnetwork.P2PServiceProto.FileTransferRequest) obj;
+      com.example.p2pnetwork.P2PServiceProto.PingRequest other = (com.example.p2pnetwork.P2PServiceProto.PingRequest) obj;
 
-      if (!getFilename()
-          .equals(other.getFilename())) return false;
-      if (!getFileSize()
-          .equals(other.getFileSize())) return false;
       if (!getSenderNode()
           .equals(other.getSenderNode())) return false;
       if (!getReceiverNode()
@@ -468,10 +278,6 @@ public final class P2PServiceProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + FILENAME_FIELD_NUMBER;
-      hash = (53 * hash) + getFilename().hashCode();
-      hash = (37 * hash) + FILESIZE_FIELD_NUMBER;
-      hash = (53 * hash) + getFileSize().hashCode();
       hash = (37 * hash) + SENDERNODE_FIELD_NUMBER;
       hash = (53 * hash) + getSenderNode().hashCode();
       hash = (37 * hash) + RECEIVERNODE_FIELD_NUMBER;
@@ -481,69 +287,69 @@ public final class P2PServiceProto {
       return hash;
     }
 
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(byte[] data)
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(java.io.InputStream input)
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseDelimitedFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -556,7 +362,7 @@ public final class P2PServiceProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.example.p2pnetwork.P2PServiceProto.FileTransferRequest prototype) {
+    public static Builder newBuilder(com.example.p2pnetwork.P2PServiceProto.PingRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -572,26 +378,30 @@ public final class P2PServiceProto {
       return builder;
     }
     /**
-     * Protobuf type {@code FileTransferRequest}
+     * <pre>
+     * Message definitions
+     * </pre>
+     *
+     * Protobuf type {@code PingRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FileTransferRequest)
-        com.example.p2pnetwork.P2PServiceProto.FileTransferRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PingRequest)
+        com.example.p2pnetwork.P2PServiceProto.PingRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferRequest_descriptor;
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_PingRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferRequest_fieldAccessorTable
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_PingRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.class, com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.Builder.class);
+                com.example.p2pnetwork.P2PServiceProto.PingRequest.class, com.example.p2pnetwork.P2PServiceProto.PingRequest.Builder.class);
       }
 
-      // Construct using com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.newBuilder()
+      // Construct using com.example.p2pnetwork.P2PServiceProto.PingRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -609,10 +419,6 @@ public final class P2PServiceProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        filename_ = "";
-
-        fileSize_ = "";
-
         senderNode_ = "";
 
         receiverNode_ = "";
@@ -623,17 +429,17 @@ public final class P2PServiceProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferRequest_descriptor;
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_PingRequest_descriptor;
       }
 
       @java.lang.Override
-      public com.example.p2pnetwork.P2PServiceProto.FileTransferRequest getDefaultInstanceForType() {
-        return com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.getDefaultInstance();
+      public com.example.p2pnetwork.P2PServiceProto.PingRequest getDefaultInstanceForType() {
+        return com.example.p2pnetwork.P2PServiceProto.PingRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.example.p2pnetwork.P2PServiceProto.FileTransferRequest build() {
-        com.example.p2pnetwork.P2PServiceProto.FileTransferRequest result = buildPartial();
+      public com.example.p2pnetwork.P2PServiceProto.PingRequest build() {
+        com.example.p2pnetwork.P2PServiceProto.PingRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -641,10 +447,8 @@ public final class P2PServiceProto {
       }
 
       @java.lang.Override
-      public com.example.p2pnetwork.P2PServiceProto.FileTransferRequest buildPartial() {
-        com.example.p2pnetwork.P2PServiceProto.FileTransferRequest result = new com.example.p2pnetwork.P2PServiceProto.FileTransferRequest(this);
-        result.filename_ = filename_;
-        result.fileSize_ = fileSize_;
+      public com.example.p2pnetwork.P2PServiceProto.PingRequest buildPartial() {
+        com.example.p2pnetwork.P2PServiceProto.PingRequest result = new com.example.p2pnetwork.P2PServiceProto.PingRequest(this);
         result.senderNode_ = senderNode_;
         result.receiverNode_ = receiverNode_;
         onBuilt();
@@ -685,24 +489,16 @@ public final class P2PServiceProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.example.p2pnetwork.P2PServiceProto.FileTransferRequest) {
-          return mergeFrom((com.example.p2pnetwork.P2PServiceProto.FileTransferRequest)other);
+        if (other instanceof com.example.p2pnetwork.P2PServiceProto.PingRequest) {
+          return mergeFrom((com.example.p2pnetwork.P2PServiceProto.PingRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.example.p2pnetwork.P2PServiceProto.FileTransferRequest other) {
-        if (other == com.example.p2pnetwork.P2PServiceProto.FileTransferRequest.getDefaultInstance()) return this;
-        if (!other.getFilename().isEmpty()) {
-          filename_ = other.filename_;
-          onChanged();
-        }
-        if (!other.getFileSize().isEmpty()) {
-          fileSize_ = other.fileSize_;
-          onChanged();
-        }
+      public Builder mergeFrom(com.example.p2pnetwork.P2PServiceProto.PingRequest other) {
+        if (other == com.example.p2pnetwork.P2PServiceProto.PingRequest.getDefaultInstance()) return this;
         if (!other.getSenderNode().isEmpty()) {
           senderNode_ = other.senderNode_;
           onChanged();
@@ -726,11 +522,11 @@ public final class P2PServiceProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.example.p2pnetwork.P2PServiceProto.FileTransferRequest parsedMessage = null;
+        com.example.p2pnetwork.P2PServiceProto.PingRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.example.p2pnetwork.P2PServiceProto.FileTransferRequest) e.getUnfinishedMessage();
+          parsedMessage = (com.example.p2pnetwork.P2PServiceProto.PingRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -740,205 +536,9 @@ public final class P2PServiceProto {
         return this;
       }
 
-      private java.lang.Object filename_ = "";
-      /**
-       * <pre>
-       * Name of the "file"
-       * </pre>
-       *
-       * <code>string filename = 1;</code>
-       * @return The filename.
-       */
-      public java.lang.String getFilename() {
-        java.lang.Object ref = filename_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          filename_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Name of the "file"
-       * </pre>
-       *
-       * <code>string filename = 1;</code>
-       * @return The bytes for filename.
-       */
-      public com.google.protobuf.ByteString
-          getFilenameBytes() {
-        java.lang.Object ref = filename_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          filename_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Name of the "file"
-       * </pre>
-       *
-       * <code>string filename = 1;</code>
-       * @param value The filename to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFilename(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        filename_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Name of the "file"
-       * </pre>
-       *
-       * <code>string filename = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFilename() {
-        
-        filename_ = getDefaultInstance().getFilename();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Name of the "file"
-       * </pre>
-       *
-       * <code>string filename = 1;</code>
-       * @param value The bytes for filename to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFilenameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        filename_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object fileSize_ = "";
-      /**
-       * <pre>
-       * Size of the "file" (for simulation purposes)
-       * </pre>
-       *
-       * <code>string fileSize = 2;</code>
-       * @return The fileSize.
-       */
-      public java.lang.String getFileSize() {
-        java.lang.Object ref = fileSize_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          fileSize_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Size of the "file" (for simulation purposes)
-       * </pre>
-       *
-       * <code>string fileSize = 2;</code>
-       * @return The bytes for fileSize.
-       */
-      public com.google.protobuf.ByteString
-          getFileSizeBytes() {
-        java.lang.Object ref = fileSize_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          fileSize_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Size of the "file" (for simulation purposes)
-       * </pre>
-       *
-       * <code>string fileSize = 2;</code>
-       * @param value The fileSize to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFileSize(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        fileSize_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Size of the "file" (for simulation purposes)
-       * </pre>
-       *
-       * <code>string fileSize = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearFileSize() {
-        
-        fileSize_ = getDefaultInstance().getFileSize();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Size of the "file" (for simulation purposes)
-       * </pre>
-       *
-       * <code>string fileSize = 2;</code>
-       * @param value The bytes for fileSize to set.
-       * @return This builder for chaining.
-       */
-      public Builder setFileSizeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        fileSize_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object senderNode_ = "";
       /**
-       * <pre>
-       * ID of the node sending the file
-       * </pre>
-       *
-       * <code>string senderNode = 3;</code>
+       * <code>string senderNode = 1;</code>
        * @return The senderNode.
        */
       public java.lang.String getSenderNode() {
@@ -954,11 +554,7 @@ public final class P2PServiceProto {
         }
       }
       /**
-       * <pre>
-       * ID of the node sending the file
-       * </pre>
-       *
-       * <code>string senderNode = 3;</code>
+       * <code>string senderNode = 1;</code>
        * @return The bytes for senderNode.
        */
       public com.google.protobuf.ByteString
@@ -975,11 +571,7 @@ public final class P2PServiceProto {
         }
       }
       /**
-       * <pre>
-       * ID of the node sending the file
-       * </pre>
-       *
-       * <code>string senderNode = 3;</code>
+       * <code>string senderNode = 1;</code>
        * @param value The senderNode to set.
        * @return This builder for chaining.
        */
@@ -994,11 +586,7 @@ public final class P2PServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * ID of the node sending the file
-       * </pre>
-       *
-       * <code>string senderNode = 3;</code>
+       * <code>string senderNode = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearSenderNode() {
@@ -1008,11 +596,7 @@ public final class P2PServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * ID of the node sending the file
-       * </pre>
-       *
-       * <code>string senderNode = 3;</code>
+       * <code>string senderNode = 1;</code>
        * @param value The bytes for senderNode to set.
        * @return This builder for chaining.
        */
@@ -1030,11 +614,7 @@ public final class P2PServiceProto {
 
       private java.lang.Object receiverNode_ = "";
       /**
-       * <pre>
-       * ID of the node receiving the file
-       * </pre>
-       *
-       * <code>string receiverNode = 4;</code>
+       * <code>string receiverNode = 2;</code>
        * @return The receiverNode.
        */
       public java.lang.String getReceiverNode() {
@@ -1050,11 +630,7 @@ public final class P2PServiceProto {
         }
       }
       /**
-       * <pre>
-       * ID of the node receiving the file
-       * </pre>
-       *
-       * <code>string receiverNode = 4;</code>
+       * <code>string receiverNode = 2;</code>
        * @return The bytes for receiverNode.
        */
       public com.google.protobuf.ByteString
@@ -1071,11 +647,7 @@ public final class P2PServiceProto {
         }
       }
       /**
-       * <pre>
-       * ID of the node receiving the file
-       * </pre>
-       *
-       * <code>string receiverNode = 4;</code>
+       * <code>string receiverNode = 2;</code>
        * @param value The receiverNode to set.
        * @return This builder for chaining.
        */
@@ -1090,11 +662,7 @@ public final class P2PServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * ID of the node receiving the file
-       * </pre>
-       *
-       * <code>string receiverNode = 4;</code>
+       * <code>string receiverNode = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearReceiverNode() {
@@ -1104,11 +672,7 @@ public final class P2PServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * ID of the node receiving the file
-       * </pre>
-       *
-       * <code>string receiverNode = 4;</code>
+       * <code>string receiverNode = 2;</code>
        * @param value The bytes for receiverNode to set.
        * @return This builder for chaining.
        */
@@ -1136,112 +700,83 @@ public final class P2PServiceProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FileTransferRequest)
+      // @@protoc_insertion_point(builder_scope:PingRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:FileTransferRequest)
-    private static final com.example.p2pnetwork.P2PServiceProto.FileTransferRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PingRequest)
+    private static final com.example.p2pnetwork.P2PServiceProto.PingRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.example.p2pnetwork.P2PServiceProto.FileTransferRequest();
+      DEFAULT_INSTANCE = new com.example.p2pnetwork.P2PServiceProto.PingRequest();
     }
 
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferRequest getDefaultInstance() {
+    public static com.example.p2pnetwork.P2PServiceProto.PingRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FileTransferRequest>
-        PARSER = new com.google.protobuf.AbstractParser<FileTransferRequest>() {
+    private static final com.google.protobuf.Parser<PingRequest>
+        PARSER = new com.google.protobuf.AbstractParser<PingRequest>() {
       @java.lang.Override
-      public FileTransferRequest parsePartialFrom(
+      public PingRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FileTransferRequest(input, extensionRegistry);
+        return new PingRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FileTransferRequest> parser() {
+    public static com.google.protobuf.Parser<PingRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FileTransferRequest> getParserForType() {
+    public com.google.protobuf.Parser<PingRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.example.p2pnetwork.P2PServiceProto.FileTransferRequest getDefaultInstanceForType() {
+    public com.example.p2pnetwork.P2PServiceProto.PingRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface FileTransferResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:FileTransferResponse)
+  public interface PingResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PingResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * Status of the simulated transfer
-     * </pre>
-     *
      * <code>string status = 1;</code>
      * @return The status.
      */
     java.lang.String getStatus();
     /**
-     * <pre>
-     * Status of the simulated transfer
-     * </pre>
-     *
      * <code>string status = 1;</code>
      * @return The bytes for status.
      */
     com.google.protobuf.ByteString
         getStatusBytes();
-
-    /**
-     * <pre>
-     * Additional details of the transfer
-     * </pre>
-     *
-     * <code>string details = 2;</code>
-     * @return The details.
-     */
-    java.lang.String getDetails();
-    /**
-     * <pre>
-     * Additional details of the transfer
-     * </pre>
-     *
-     * <code>string details = 2;</code>
-     * @return The bytes for details.
-     */
-    com.google.protobuf.ByteString
-        getDetailsBytes();
   }
   /**
-   * Protobuf type {@code FileTransferResponse}
+   * Protobuf type {@code PingResponse}
    */
-  public static final class FileTransferResponse extends
+  public static final class PingResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:FileTransferResponse)
-      FileTransferResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:PingResponse)
+      PingResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use FileTransferResponse.newBuilder() to construct.
-    private FileTransferResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PingResponse.newBuilder() to construct.
+    private PingResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private FileTransferResponse() {
+    private PingResponse() {
       status_ = "";
-      details_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new FileTransferResponse();
+      return new PingResponse();
     }
 
     @java.lang.Override
@@ -1249,7 +784,7 @@ public final class P2PServiceProto {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private FileTransferResponse(
+    private PingResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1273,12 +808,6 @@ public final class P2PServiceProto {
               status_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              details_ = s;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1300,24 +829,20 @@ public final class P2PServiceProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferResponse_descriptor;
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_PingResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferResponse_fieldAccessorTable
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_PingResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.class, com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.Builder.class);
+              com.example.p2pnetwork.P2PServiceProto.PingResponse.class, com.example.p2pnetwork.P2PServiceProto.PingResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
     private volatile java.lang.Object status_;
     /**
-     * <pre>
-     * Status of the simulated transfer
-     * </pre>
-     *
      * <code>string status = 1;</code>
      * @return The status.
      */
@@ -1335,10 +860,6 @@ public final class P2PServiceProto {
       }
     }
     /**
-     * <pre>
-     * Status of the simulated transfer
-     * </pre>
-     *
      * <code>string status = 1;</code>
      * @return The bytes for status.
      */
@@ -1351,52 +872,6 @@ public final class P2PServiceProto {
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         status_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DETAILS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object details_;
-    /**
-     * <pre>
-     * Additional details of the transfer
-     * </pre>
-     *
-     * <code>string details = 2;</code>
-     * @return The details.
-     */
-    @java.lang.Override
-    public java.lang.String getDetails() {
-      java.lang.Object ref = details_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        details_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * Additional details of the transfer
-     * </pre>
-     *
-     * <code>string details = 2;</code>
-     * @return The bytes for details.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDetailsBytes() {
-      java.lang.Object ref = details_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        details_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1420,9 +895,6 @@ public final class P2PServiceProto {
       if (!getStatusBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
       }
-      if (!getDetailsBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, details_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -1435,9 +907,6 @@ public final class P2PServiceProto {
       if (!getStatusBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
       }
-      if (!getDetailsBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, details_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1448,15 +917,13 @@ public final class P2PServiceProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.example.p2pnetwork.P2PServiceProto.FileTransferResponse)) {
+      if (!(obj instanceof com.example.p2pnetwork.P2PServiceProto.PingResponse)) {
         return super.equals(obj);
       }
-      com.example.p2pnetwork.P2PServiceProto.FileTransferResponse other = (com.example.p2pnetwork.P2PServiceProto.FileTransferResponse) obj;
+      com.example.p2pnetwork.P2PServiceProto.PingResponse other = (com.example.p2pnetwork.P2PServiceProto.PingResponse) obj;
 
       if (!getStatus()
           .equals(other.getStatus())) return false;
-      if (!getDetails()
-          .equals(other.getDetails())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1470,76 +937,74 @@ public final class P2PServiceProto {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + getStatus().hashCode();
-      hash = (37 * hash) + DETAILS_FIELD_NUMBER;
-      hash = (53 * hash) + getDetails().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(byte[] data)
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(java.io.InputStream input)
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseDelimitedFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parseFrom(
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1552,7 +1017,7 @@ public final class P2PServiceProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.example.p2pnetwork.P2PServiceProto.FileTransferResponse prototype) {
+    public static Builder newBuilder(com.example.p2pnetwork.P2PServiceProto.PingResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1568,26 +1033,26 @@ public final class P2PServiceProto {
       return builder;
     }
     /**
-     * Protobuf type {@code FileTransferResponse}
+     * Protobuf type {@code PingResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:FileTransferResponse)
-        com.example.p2pnetwork.P2PServiceProto.FileTransferResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PingResponse)
+        com.example.p2pnetwork.P2PServiceProto.PingResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferResponse_descriptor;
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_PingResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferResponse_fieldAccessorTable
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_PingResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.class, com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.Builder.class);
+                com.example.p2pnetwork.P2PServiceProto.PingResponse.class, com.example.p2pnetwork.P2PServiceProto.PingResponse.Builder.class);
       }
 
-      // Construct using com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.newBuilder()
+      // Construct using com.example.p2pnetwork.P2PServiceProto.PingResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1607,25 +1072,23 @@ public final class P2PServiceProto {
         super.clear();
         status_ = "";
 
-        details_ = "";
-
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.example.p2pnetwork.P2PServiceProto.internal_static_FileTransferResponse_descriptor;
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_PingResponse_descriptor;
       }
 
       @java.lang.Override
-      public com.example.p2pnetwork.P2PServiceProto.FileTransferResponse getDefaultInstanceForType() {
-        return com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.getDefaultInstance();
+      public com.example.p2pnetwork.P2PServiceProto.PingResponse getDefaultInstanceForType() {
+        return com.example.p2pnetwork.P2PServiceProto.PingResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.example.p2pnetwork.P2PServiceProto.FileTransferResponse build() {
-        com.example.p2pnetwork.P2PServiceProto.FileTransferResponse result = buildPartial();
+      public com.example.p2pnetwork.P2PServiceProto.PingResponse build() {
+        com.example.p2pnetwork.P2PServiceProto.PingResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1633,10 +1096,9 @@ public final class P2PServiceProto {
       }
 
       @java.lang.Override
-      public com.example.p2pnetwork.P2PServiceProto.FileTransferResponse buildPartial() {
-        com.example.p2pnetwork.P2PServiceProto.FileTransferResponse result = new com.example.p2pnetwork.P2PServiceProto.FileTransferResponse(this);
+      public com.example.p2pnetwork.P2PServiceProto.PingResponse buildPartial() {
+        com.example.p2pnetwork.P2PServiceProto.PingResponse result = new com.example.p2pnetwork.P2PServiceProto.PingResponse(this);
         result.status_ = status_;
-        result.details_ = details_;
         onBuilt();
         return result;
       }
@@ -1675,22 +1137,18 @@ public final class P2PServiceProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.example.p2pnetwork.P2PServiceProto.FileTransferResponse) {
-          return mergeFrom((com.example.p2pnetwork.P2PServiceProto.FileTransferResponse)other);
+        if (other instanceof com.example.p2pnetwork.P2PServiceProto.PingResponse) {
+          return mergeFrom((com.example.p2pnetwork.P2PServiceProto.PingResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.example.p2pnetwork.P2PServiceProto.FileTransferResponse other) {
-        if (other == com.example.p2pnetwork.P2PServiceProto.FileTransferResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.example.p2pnetwork.P2PServiceProto.PingResponse other) {
+        if (other == com.example.p2pnetwork.P2PServiceProto.PingResponse.getDefaultInstance()) return this;
         if (!other.getStatus().isEmpty()) {
           status_ = other.status_;
-          onChanged();
-        }
-        if (!other.getDetails().isEmpty()) {
-          details_ = other.details_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1708,11 +1166,11 @@ public final class P2PServiceProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.example.p2pnetwork.P2PServiceProto.FileTransferResponse parsedMessage = null;
+        com.example.p2pnetwork.P2PServiceProto.PingResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.example.p2pnetwork.P2PServiceProto.FileTransferResponse) e.getUnfinishedMessage();
+          parsedMessage = (com.example.p2pnetwork.P2PServiceProto.PingResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1724,10 +1182,6 @@ public final class P2PServiceProto {
 
       private java.lang.Object status_ = "";
       /**
-       * <pre>
-       * Status of the simulated transfer
-       * </pre>
-       *
        * <code>string status = 1;</code>
        * @return The status.
        */
@@ -1744,10 +1198,6 @@ public final class P2PServiceProto {
         }
       }
       /**
-       * <pre>
-       * Status of the simulated transfer
-       * </pre>
-       *
        * <code>string status = 1;</code>
        * @return The bytes for status.
        */
@@ -1765,10 +1215,6 @@ public final class P2PServiceProto {
         }
       }
       /**
-       * <pre>
-       * Status of the simulated transfer
-       * </pre>
-       *
        * <code>string status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
@@ -1784,10 +1230,6 @@ public final class P2PServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Status of the simulated transfer
-       * </pre>
-       *
        * <code>string status = 1;</code>
        * @return This builder for chaining.
        */
@@ -1798,10 +1240,6 @@ public final class P2PServiceProto {
         return this;
       }
       /**
-       * <pre>
-       * Status of the simulated transfer
-       * </pre>
-       *
        * <code>string status = 1;</code>
        * @param value The bytes for status to set.
        * @return This builder for chaining.
@@ -1814,102 +1252,6 @@ public final class P2PServiceProto {
   checkByteStringIsUtf8(value);
         
         status_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object details_ = "";
-      /**
-       * <pre>
-       * Additional details of the transfer
-       * </pre>
-       *
-       * <code>string details = 2;</code>
-       * @return The details.
-       */
-      public java.lang.String getDetails() {
-        java.lang.Object ref = details_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          details_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Additional details of the transfer
-       * </pre>
-       *
-       * <code>string details = 2;</code>
-       * @return The bytes for details.
-       */
-      public com.google.protobuf.ByteString
-          getDetailsBytes() {
-        java.lang.Object ref = details_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          details_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Additional details of the transfer
-       * </pre>
-       *
-       * <code>string details = 2;</code>
-       * @param value The details to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDetails(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        details_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Additional details of the transfer
-       * </pre>
-       *
-       * <code>string details = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDetails() {
-        
-        details_ = getDefaultInstance().getDetails();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Additional details of the transfer
-       * </pre>
-       *
-       * <code>string details = 2;</code>
-       * @param value The bytes for details to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDetailsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        details_ = value;
         onChanged();
         return this;
       }
@@ -1926,56 +1268,56 @@ public final class P2PServiceProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:FileTransferResponse)
+      // @@protoc_insertion_point(builder_scope:PingResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:FileTransferResponse)
-    private static final com.example.p2pnetwork.P2PServiceProto.FileTransferResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PingResponse)
+    private static final com.example.p2pnetwork.P2PServiceProto.PingResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.example.p2pnetwork.P2PServiceProto.FileTransferResponse();
+      DEFAULT_INSTANCE = new com.example.p2pnetwork.P2PServiceProto.PingResponse();
     }
 
-    public static com.example.p2pnetwork.P2PServiceProto.FileTransferResponse getDefaultInstance() {
+    public static com.example.p2pnetwork.P2PServiceProto.PingResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FileTransferResponse>
-        PARSER = new com.google.protobuf.AbstractParser<FileTransferResponse>() {
+    private static final com.google.protobuf.Parser<PingResponse>
+        PARSER = new com.google.protobuf.AbstractParser<PingResponse>() {
       @java.lang.Override
-      public FileTransferResponse parsePartialFrom(
+      public PingResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FileTransferResponse(input, extensionRegistry);
+        return new PingResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<FileTransferResponse> parser() {
+    public static com.google.protobuf.Parser<PingResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FileTransferResponse> getParserForType() {
+    public com.google.protobuf.Parser<PingResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.example.p2pnetwork.P2PServiceProto.FileTransferResponse getDefaultInstanceForType() {
+    public com.example.p2pnetwork.P2PServiceProto.PingResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FileTransferRequest_descriptor;
+    internal_static_PingRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FileTransferRequest_fieldAccessorTable;
+      internal_static_PingRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_FileTransferResponse_descriptor;
+    internal_static_PingResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_FileTransferResponse_fieldAccessorTable;
+      internal_static_PingResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1985,31 +1327,29 @@ public final class P2PServiceProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\tp2p.proto\"c\n\023FileTransferRequest\022\020\n\010fi" +
-      "lename\030\001 \001(\t\022\020\n\010fileSize\030\002 \001(\t\022\022\n\nsender" +
-      "Node\030\003 \001(\t\022\024\n\014receiverNode\030\004 \001(\t\"7\n\024File" +
-      "TransferResponse\022\016\n\006status\030\001 \001(\t\022\017\n\007deta" +
-      "ils\030\002 \001(\t2Q\n\nP2PService\022C\n\024simulateFileT" +
-      "ransfer\022\024.FileTransferRequest\032\025.FileTran" +
-      "sferResponseB)\n\026com.example.p2pnetworkB\017" +
-      "P2PServiceProtob\006proto3"
+      "\n\tp2p.proto\"7\n\013PingRequest\022\022\n\nsenderNode" +
+      "\030\001 \001(\t\022\024\n\014receiverNode\030\002 \001(\t\"\036\n\014PingResp" +
+      "onse\022\016\n\006status\030\001 \001(\t21\n\nP2PService\022#\n\004pi" +
+      "ng\022\014.PingRequest\032\r.PingResponseB)\n\026com.e" +
+      "xample.p2pnetworkB\017P2PServiceProtob\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_FileTransferRequest_descriptor =
+    internal_static_PingRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_FileTransferRequest_fieldAccessorTable = new
+    internal_static_PingRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FileTransferRequest_descriptor,
-        new java.lang.String[] { "Filename", "FileSize", "SenderNode", "ReceiverNode", });
-    internal_static_FileTransferResponse_descriptor =
+        internal_static_PingRequest_descriptor,
+        new java.lang.String[] { "SenderNode", "ReceiverNode", });
+    internal_static_PingResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_FileTransferResponse_fieldAccessorTable = new
+    internal_static_PingResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_FileTransferResponse_descriptor,
-        new java.lang.String[] { "Status", "Details", });
+        internal_static_PingResponse_descriptor,
+        new java.lang.String[] { "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
