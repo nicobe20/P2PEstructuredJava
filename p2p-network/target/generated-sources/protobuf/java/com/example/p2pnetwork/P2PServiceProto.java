@@ -44,6 +44,7 @@ public final class P2PServiceProto {
   }
   /**
    * <pre>
+   *used directly in the ping method in p2pclient
    * Message definitions
    * </pre>
    *
@@ -379,6 +380,7 @@ public final class P2PServiceProto {
     }
     /**
      * <pre>
+     *used directly in the ping method in p2pclient
      * Message definitions
      * </pre>
      *
@@ -1308,6 +1310,1606 @@ public final class P2PServiceProto {
 
   }
 
+  public interface NodeInfoRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:NodeInfoRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * ID del nodo para obtener información
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The nodeId.
+     */
+    java.lang.String getNodeId();
+    /**
+     * <pre>
+     * ID del nodo para obtener información
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The bytes for nodeId.
+     */
+    com.google.protobuf.ByteString
+        getNodeIdBytes();
+  }
+  /**
+   * <pre>
+   * Message definition for node info
+   * used to request node information based on node ID
+   * </pre>
+   *
+   * Protobuf type {@code NodeInfoRequest}
+   */
+  public static final class NodeInfoRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:NodeInfoRequest)
+      NodeInfoRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NodeInfoRequest.newBuilder() to construct.
+    private NodeInfoRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NodeInfoRequest() {
+      nodeId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NodeInfoRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NodeInfoRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nodeId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.class, com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.Builder.class);
+    }
+
+    public static final int NODEID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object nodeId_;
+    /**
+     * <pre>
+     * ID del nodo para obtener información
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public java.lang.String getNodeId() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nodeId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ID del nodo para obtener información
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The bytes for nodeId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNodeIdBytes() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nodeId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNodeIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nodeId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNodeIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nodeId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest)) {
+        return super.equals(obj);
+      }
+      com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest other = (com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest) obj;
+
+      if (!getNodeId()
+          .equals(other.getNodeId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NODEID_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message definition for node info
+     * used to request node information based on node ID
+     * </pre>
+     *
+     * Protobuf type {@code NodeInfoRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:NodeInfoRequest)
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.class, com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.Builder.class);
+      }
+
+      // Construct using com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        nodeId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest getDefaultInstanceForType() {
+        return com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest build() {
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest buildPartial() {
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest result = new com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest(this);
+        result.nodeId_ = nodeId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest) {
+          return mergeFrom((com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest other) {
+        if (other == com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest.getDefaultInstance()) return this;
+        if (!other.getNodeId().isEmpty()) {
+          nodeId_ = other.nodeId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object nodeId_ = "";
+      /**
+       * <pre>
+       * ID del nodo para obtener información
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @return The nodeId.
+       */
+      public java.lang.String getNodeId() {
+        java.lang.Object ref = nodeId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nodeId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ID del nodo para obtener información
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @return The bytes for nodeId.
+       */
+      public com.google.protobuf.ByteString
+          getNodeIdBytes() {
+        java.lang.Object ref = nodeId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nodeId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ID del nodo para obtener información
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ID del nodo para obtener información
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        
+        nodeId_ = getDefaultInstance().getNodeId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ID del nodo para obtener información
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @param value The bytes for nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:NodeInfoRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:NodeInfoRequest)
+    private static final com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest();
+    }
+
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NodeInfoRequest>
+        PARSER = new com.google.protobuf.AbstractParser<NodeInfoRequest>() {
+      @java.lang.Override
+      public NodeInfoRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NodeInfoRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NodeInfoRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NodeInfoRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.p2pnetwork.P2PServiceProto.NodeInfoRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NodeInfoResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:NodeInfoResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * The ID of the node
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The nodeId.
+     */
+    java.lang.String getNodeId();
+    /**
+     * <pre>
+     * The ID of the node
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The bytes for nodeId.
+     */
+    com.google.protobuf.ByteString
+        getNodeIdBytes();
+
+    /**
+     * <pre>
+     * The ID of the successor node
+     * </pre>
+     *
+     * <code>string successorId = 2;</code>
+     * @return The successorId.
+     */
+    java.lang.String getSuccessorId();
+    /**
+     * <pre>
+     * The ID of the successor node
+     * </pre>
+     *
+     * <code>string successorId = 2;</code>
+     * @return The bytes for successorId.
+     */
+    com.google.protobuf.ByteString
+        getSuccessorIdBytes();
+
+    /**
+     * <pre>
+     * The ID of the predecessor node
+     * </pre>
+     *
+     * <code>string predecessorId = 3;</code>
+     * @return The predecessorId.
+     */
+    java.lang.String getPredecessorId();
+    /**
+     * <pre>
+     * The ID of the predecessor node
+     * </pre>
+     *
+     * <code>string predecessorId = 3;</code>
+     * @return The bytes for predecessorId.
+     */
+    com.google.protobuf.ByteString
+        getPredecessorIdBytes();
+  }
+  /**
+   * <pre>
+   * Message definition for node info response
+   * used to respond with node's successor and predecessor
+   * </pre>
+   *
+   * Protobuf type {@code NodeInfoResponse}
+   */
+  public static final class NodeInfoResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:NodeInfoResponse)
+      NodeInfoResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NodeInfoResponse.newBuilder() to construct.
+    private NodeInfoResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NodeInfoResponse() {
+      nodeId_ = "";
+      successorId_ = "";
+      predecessorId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NodeInfoResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NodeInfoResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nodeId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              successorId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              predecessorId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.class, com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.Builder.class);
+    }
+
+    public static final int NODEID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object nodeId_;
+    /**
+     * <pre>
+     * The ID of the node
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public java.lang.String getNodeId() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nodeId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The ID of the node
+     * </pre>
+     *
+     * <code>string nodeId = 1;</code>
+     * @return The bytes for nodeId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNodeIdBytes() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nodeId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUCCESSORID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object successorId_;
+    /**
+     * <pre>
+     * The ID of the successor node
+     * </pre>
+     *
+     * <code>string successorId = 2;</code>
+     * @return The successorId.
+     */
+    @java.lang.Override
+    public java.lang.String getSuccessorId() {
+      java.lang.Object ref = successorId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        successorId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The ID of the successor node
+     * </pre>
+     *
+     * <code>string successorId = 2;</code>
+     * @return The bytes for successorId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSuccessorIdBytes() {
+      java.lang.Object ref = successorId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        successorId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PREDECESSORID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object predecessorId_;
+    /**
+     * <pre>
+     * The ID of the predecessor node
+     * </pre>
+     *
+     * <code>string predecessorId = 3;</code>
+     * @return The predecessorId.
+     */
+    @java.lang.Override
+    public java.lang.String getPredecessorId() {
+      java.lang.Object ref = predecessorId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        predecessorId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The ID of the predecessor node
+     * </pre>
+     *
+     * <code>string predecessorId = 3;</code>
+     * @return The bytes for predecessorId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPredecessorIdBytes() {
+      java.lang.Object ref = predecessorId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        predecessorId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getNodeIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nodeId_);
+      }
+      if (!getSuccessorIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, successorId_);
+      }
+      if (!getPredecessorIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, predecessorId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getNodeIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nodeId_);
+      }
+      if (!getSuccessorIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, successorId_);
+      }
+      if (!getPredecessorIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, predecessorId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse)) {
+        return super.equals(obj);
+      }
+      com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse other = (com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse) obj;
+
+      if (!getNodeId()
+          .equals(other.getNodeId())) return false;
+      if (!getSuccessorId()
+          .equals(other.getSuccessorId())) return false;
+      if (!getPredecessorId()
+          .equals(other.getPredecessorId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NODEID_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeId().hashCode();
+      hash = (37 * hash) + SUCCESSORID_FIELD_NUMBER;
+      hash = (53 * hash) + getSuccessorId().hashCode();
+      hash = (37 * hash) + PREDECESSORID_FIELD_NUMBER;
+      hash = (53 * hash) + getPredecessorId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message definition for node info response
+     * used to respond with node's successor and predecessor
+     * </pre>
+     *
+     * Protobuf type {@code NodeInfoResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:NodeInfoResponse)
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.class, com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.Builder.class);
+      }
+
+      // Construct using com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        nodeId_ = "";
+
+        successorId_ = "";
+
+        predecessorId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.p2pnetwork.P2PServiceProto.internal_static_NodeInfoResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse getDefaultInstanceForType() {
+        return com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse build() {
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse buildPartial() {
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse result = new com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse(this);
+        result.nodeId_ = nodeId_;
+        result.successorId_ = successorId_;
+        result.predecessorId_ = predecessorId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse) {
+          return mergeFrom((com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse other) {
+        if (other == com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse.getDefaultInstance()) return this;
+        if (!other.getNodeId().isEmpty()) {
+          nodeId_ = other.nodeId_;
+          onChanged();
+        }
+        if (!other.getSuccessorId().isEmpty()) {
+          successorId_ = other.successorId_;
+          onChanged();
+        }
+        if (!other.getPredecessorId().isEmpty()) {
+          predecessorId_ = other.predecessorId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object nodeId_ = "";
+      /**
+       * <pre>
+       * The ID of the node
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @return The nodeId.
+       */
+      public java.lang.String getNodeId() {
+        java.lang.Object ref = nodeId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nodeId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ID of the node
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @return The bytes for nodeId.
+       */
+      public com.google.protobuf.ByteString
+          getNodeIdBytes() {
+        java.lang.Object ref = nodeId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nodeId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ID of the node
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ID of the node
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        
+        nodeId_ = getDefaultInstance().getNodeId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ID of the node
+       * </pre>
+       *
+       * <code>string nodeId = 1;</code>
+       * @param value The bytes for nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object successorId_ = "";
+      /**
+       * <pre>
+       * The ID of the successor node
+       * </pre>
+       *
+       * <code>string successorId = 2;</code>
+       * @return The successorId.
+       */
+      public java.lang.String getSuccessorId() {
+        java.lang.Object ref = successorId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          successorId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ID of the successor node
+       * </pre>
+       *
+       * <code>string successorId = 2;</code>
+       * @return The bytes for successorId.
+       */
+      public com.google.protobuf.ByteString
+          getSuccessorIdBytes() {
+        java.lang.Object ref = successorId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          successorId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ID of the successor node
+       * </pre>
+       *
+       * <code>string successorId = 2;</code>
+       * @param value The successorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccessorId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        successorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ID of the successor node
+       * </pre>
+       *
+       * <code>string successorId = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuccessorId() {
+        
+        successorId_ = getDefaultInstance().getSuccessorId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ID of the successor node
+       * </pre>
+       *
+       * <code>string successorId = 2;</code>
+       * @param value The bytes for successorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccessorIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        successorId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object predecessorId_ = "";
+      /**
+       * <pre>
+       * The ID of the predecessor node
+       * </pre>
+       *
+       * <code>string predecessorId = 3;</code>
+       * @return The predecessorId.
+       */
+      public java.lang.String getPredecessorId() {
+        java.lang.Object ref = predecessorId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          predecessorId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ID of the predecessor node
+       * </pre>
+       *
+       * <code>string predecessorId = 3;</code>
+       * @return The bytes for predecessorId.
+       */
+      public com.google.protobuf.ByteString
+          getPredecessorIdBytes() {
+        java.lang.Object ref = predecessorId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          predecessorId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ID of the predecessor node
+       * </pre>
+       *
+       * <code>string predecessorId = 3;</code>
+       * @param value The predecessorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPredecessorId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        predecessorId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ID of the predecessor node
+       * </pre>
+       *
+       * <code>string predecessorId = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPredecessorId() {
+        
+        predecessorId_ = getDefaultInstance().getPredecessorId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ID of the predecessor node
+       * </pre>
+       *
+       * <code>string predecessorId = 3;</code>
+       * @param value The bytes for predecessorId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPredecessorIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        predecessorId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:NodeInfoResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:NodeInfoResponse)
+    private static final com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse();
+    }
+
+    public static com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NodeInfoResponse>
+        PARSER = new com.google.protobuf.AbstractParser<NodeInfoResponse>() {
+      @java.lang.Override
+      public NodeInfoResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NodeInfoResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NodeInfoResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NodeInfoResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PingRequest_descriptor;
   private static final 
@@ -1318,6 +2920,16 @@ public final class P2PServiceProto {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PingResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_NodeInfoRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_NodeInfoRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_NodeInfoResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_NodeInfoResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1329,10 +2941,14 @@ public final class P2PServiceProto {
     java.lang.String[] descriptorData = {
       "\n\tp2p.proto\"7\n\013PingRequest\022\022\n\nsenderNode" +
       "\030\001 \001(\t\022\024\n\014receiverNode\030\002 \001(\t\"\036\n\014PingResp" +
-      "onse\022\016\n\006status\030\001 \001(\t21\n\nP2PService\022#\n\004pi" +
-      "ng\022\014.PingRequest\032\r.PingResponseB)\n\026com.e" +
-      "xample.p2pnetworkB\017P2PServiceProtob\006prot" +
-      "o3"
+      "onse\022\016\n\006status\030\001 \001(\t\"!\n\017NodeInfoRequest\022" +
+      "\016\n\006nodeId\030\001 \001(\t\"N\n\020NodeInfoResponse\022\016\n\006n" +
+      "odeId\030\001 \001(\t\022\023\n\013successorId\030\002 \001(\t\022\025\n\rpred" +
+      "ecessorId\030\003 \001(\t2e\n\nP2PService\022#\n\004ping\022\014." +
+      "PingRequest\032\r.PingResponse\0222\n\013getNodeInf" +
+      "o\022\020.NodeInfoRequest\032\021.NodeInfoResponseB)" +
+      "\n\026com.example.p2pnetworkB\017P2PServiceProt" +
+      "ob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1350,6 +2966,18 @@ public final class P2PServiceProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PingResponse_descriptor,
         new java.lang.String[] { "Status", });
+    internal_static_NodeInfoRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_NodeInfoRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_NodeInfoRequest_descriptor,
+        new java.lang.String[] { "NodeId", });
+    internal_static_NodeInfoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_NodeInfoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_NodeInfoResponse_descriptor,
+        new java.lang.String[] { "NodeId", "SuccessorId", "PredecessorId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

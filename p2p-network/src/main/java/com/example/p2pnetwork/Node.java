@@ -45,7 +45,7 @@ public class Node {
         this.predecessor = predecessor;
     }
 
-    // Unir un nuevo nodo a la red y actualizar sucesores/predecesores
+    // Unir un nuevo nodo a la red y actualizar sucesores/predecesores   aqui hay problemas
     public void joinNetwork(Node newNode) {
         if (this.successor == this && this.predecessor == this) {
             // Si este es el único nodo en la red, el nuevo nodo será su sucesor y predecesor
@@ -67,13 +67,14 @@ public class Node {
     }
 
     // Encontrar el sucesor para un nodo con una ID específica
+
     public Node findSuccessor(String key) {
-        if (this.successor == null || (this.idNode.compareTo(key) < 0 && this.successor.getIdNode().compareTo(key) >= 0)) {
-            return this;
-        } else {
-            return this.successor.findSuccessor(key);
-        }
+    if (this.successor == null || (this.idNode.compareTo(key) < 0 && this.successor.getIdNode().compareTo(key) >= 0) || this.idNode.compareTo(this.successor.getIdNode()) > 0) {
+        return this;
+    } else {
+        return this.successor.findSuccessor(key);
     }
+}
 
     // Dejar la red y actualizar sucesores/predecesores
     public void leaveNetwork() {

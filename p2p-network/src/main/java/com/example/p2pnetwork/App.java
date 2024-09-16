@@ -8,29 +8,29 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            // Crear un nuevo nodo con ID aleatorio
+            Node currentNode = new Node();
 
-        // Crear un nuevo nodo con ID aleatorio
-        Node currentNode = new Node();
+            // Pedir el número de puerto
+            System.out.println("Ingrese el número de puerto para este nodo: ");
+            int port = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
 
-        // Pedir el número de puerto
-        System.out.println("Ingrese el número de puerto para este nodo: ");
-        int port = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+            // Imprimir el estado de la red (para depuración)
+            Node.printNetworkState();
 
-        // Imprimir el estado de la red (para depuración)
-        Node.printNetworkState();
+            // Iniciar el servidor gRPC
+            Server server = ServerBuilder.forPort(port)
+                    .addService(new P2PServiceImpl(currentNode))
+                    .build();
 
-        // Iniciar el servidor gRPC
-        Server server = ServerBuilder.forPort(port)
-                .addService(new P2PServiceImpl(currentNode))
-                .build();
+            System.out.println("gRPC Server iniciando en el puerto " + port + "...");
+            server.start();
+            System.out.println("gRPC Server iniciado en el puerto " + port);
 
-        System.out.println("gRPC Server iniciando en el puerto " + port + "...");
-        server.start();
-        System.out.println("gRPC Server iniciado en el puerto " + port);
-
-        // Mantener el servidor en ejecución
-        server.awaitTermination();
+            // Mantener el servidor en ejecución
+            server.awaitTermination();
+        }
     }
 }

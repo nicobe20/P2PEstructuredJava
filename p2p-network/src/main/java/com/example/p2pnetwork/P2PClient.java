@@ -22,6 +22,7 @@ public class P2PClient {
     }
 
     // Método para hacer ping a otro nodo
+    //vueltota
     public void ping(String senderNodeId, String receiverNodeId) {
         PingRequest request = PingRequest.newBuilder()
                 .setSenderNode(senderNodeId)
@@ -29,7 +30,8 @@ public class P2PClient {
                 .build();
 
         try {
-            PingResponse response = stub.ping(request);
+            PingResponse response = stub.ping(request); //stub generated here
+
             System.out.println("Respuesta del ping: " + response.getStatus());
         } catch (StatusRuntimeException e) {
             System.err.println("Error durante el ping: " + e.getStatus());
@@ -61,20 +63,21 @@ public class P2PClient {
     public static void runClientConsole(P2PClient client, String nodeId) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Ingrese un comando (ping/admin/exit): ");
+            System.out.println("Ingrese un comando (ping/estado/exit): ");
             String command = scanner.nextLine();
             if (command.equalsIgnoreCase("exit")) {
                 break;
             } else if (command.equalsIgnoreCase("ping")) {
-                System.out.println("Ingrese el ID del nodo destino para hacer ping: ");
+                System.out.println("Ingrese el ID del nodo al que quieres hacer ping: ");
+
                 String targetNodeId = scanner.nextLine();
+                
                 client.ping(nodeId, targetNodeId);
-            } else if (command.equalsIgnoreCase("admin")) {
-                System.out.println("Ingrese el ID del nodo que desea administrar: ");
-                String targetNodeId = scanner.nextLine();
-                client.getNodeInfo(targetNodeId);
-            } else {
-                System.out.println("Comando no reconocido. Intente 'ping', 'admin' o 'exit'.");
+            
+            } else if(command.equalsIgnoreCase("estado")) {
+                Node.printNetworkState();
+            }else {
+                System.out.println("Comando no reconocido. Intente 'ping', 'estado' o 'exit'.");
             }
         }
     }
