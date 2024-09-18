@@ -3,8 +3,6 @@ package com.example.p2pnetwork;
 import com.example.p2pnetwork.P2PServiceProto.*;
 import io.grpc.stub.StreamObserver;
 
-import java.util.Scanner;
-
 public class P2PServiceImpl extends P2PServiceGrpc.P2PServiceImplBase {
 
     private Node currentNode;
@@ -13,86 +11,60 @@ public class P2PServiceImpl extends P2PServiceGrpc.P2PServiceImplBase {
         this.currentNode = node;
     }
 
-
-    // Implementación del servicio Ping
+    // Ping simulation method
     @Override
     public void ping(PingRequest request, StreamObserver<PingResponse> responseObserver) {
-        //To print who sends and who recieves
         String senderNode = request.getSenderNode();
         String receiverNode = request.getReceiverNode();
 
-        if (receiverNode != null){
-
-        System.out.println("Ping recibido de " + senderNode + " hacia " + receiverNode);
-
-        PingResponse response = PingResponse.newBuilder().setStatus("Ping exitoso de " + senderNode + " a " + receiverNode).build(); 
-
-        responseObserver.onNext(response);
-        
-    }else{
-        responseObserver.onError(new Throwable("Nodo con id:"+ receiverNode +"No pudo realizarse" ));
-    }
-    responseObserver.onCompleted();
-}
-
-    // Implementación del servicio GetNodeInfo
-    @Override
-    public void getNodeInfo(NodeInfoRequest request, StreamObserver<NodeInfoResponse> responseObserver) {
-        String nodeId = request.getNodeId();
-        Node node = Node.findNodeById(nodeId);
-
-        if (node != null) {
-            NodeInfoResponse response = NodeInfoResponse.newBuilder()
-                    .setNodeId(node.getIdNode())
-                    .setSuccessorId(node.getSuccessor().getIdNode())
-                    .setPredecessorId(node.getPredecessor().getIdNode())
+        if (receiverNode != null) {
+            System.out.println("Ping received from " + senderNode + " to " + receiverNode);
+            PingResponse response = PingResponse.newBuilder()
+                    .setStatus("Ping successful from " + senderNode + " to " + receiverNode)
                     .build();
+
             responseObserver.onNext(response);
         } else {
-            responseObserver.onError(new Throwable("Nodo no encontrado"));
+            responseObserver.onError(new Throwable("Receiver node " + receiverNode + " not found."));
         }
         responseObserver.onCompleted();
     }
 
+    // Join the network implementation
+    @Override
+public void joinNetwork(JoinRequest request, StreamObserver<JoinResponse> responseObserver) {
+    String nodeId = request.getNodeId();
     
-    public void runConsole() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (true) {
-                System.out.println("Ingrese un comando (ping/exit/estado): ");
-                
-                String command = scanner.nextLine();
-                
-                if (command.equalsIgnoreCase("exit")) {
-                    currentNode.leaveNetwork();
-                    break;
-                } else if (command.equalsIgnoreCase("ping")) {
-                    System.out.println("Ingrese el ID del nodo objetivo para hacer ping: ");
+    // Current node joins the network (no need to pass the newNode as an argument)
+    currentNode.joinNetwork();  // Fix here: no arguments needed
 
-                    String targetNodeId = scanner.nextLine();
+    JoinResponse response = JoinResponse.newBuilder()
+            .setStatus("Node with ID: " + nodeId + " joined successfully.")
+            .setSuccessorId(currentNode.getSuccessor().getIdNode())
+            .setPredecessorId(currentNode.getPredecessor().getIdNode())
+            .build();
 
-                    String currentNodeId = currentNode.getIdNode();
-
-                    //Node targetNode = Node.findNodeById(targetNodeId);
-                    
-                    P2PClient client = new P2PClient(currentNodeId);
-
-                    if (targetNodeId != null) {
-                    
-                        client.ping(currentNodeId,targetNodeId);
-                    
-                    } else {
-                    
-                        System.out.println("Nodo no encontrado.");
-                    
-                    }
-                } 
-                else if(command.equalsIgnoreCase("estado")) {
-                    Node.printNetworkState();
-                }else{
-                    System.out.println("Comando no reconocido. Intente 'ping', 'estado' o 'exit'.");
-                }
-            }
-        }
-    }
+    responseObserver.onNext(response);
+    responseObserver.onCompleted();
 }
 
+    // Get node info implementation
+    @Override
+    public void getNodeInfo(NodeInfoRequest request, StreamObserver<NodeInfoResponse> responseObserver) {
+    String nodeId = request.getNodeId();
+
+    // Check if the current node has a valid successor and predecessor
+    String successorId = (currentNode.getSuccessor() != null) ? currentNode.getSuccessor().getIdNode() : "null";
+    String predecessorId = (currentNode.getPredecessor() != null) ? currentNode.getPredecessor().getIdNode() : "null";
+
+    NodeInfoResponse response = NodeInfoResponse.newBuilder()
+            .setNodeId(currentNode.getIdNode())
+            .setSuccessorId(successorId)  // Handle potential null values
+            .setPredecessorId(predecessorId)  // Handle potential null values
+            .build();
+
+    responseObserver.onNext(response);
+    responseObserver.onCompleted();
+}
+
+}

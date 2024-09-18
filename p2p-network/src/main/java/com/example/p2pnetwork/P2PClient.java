@@ -39,6 +39,7 @@ public class P2PClient {
     }
 
     // Método para obtener información de un nodo
+    /* 
     public void getNodeInfo(String nodeId) {
         NodeInfoRequest request = NodeInfoRequest.newBuilder()
                 .setNodeId(nodeId)
@@ -53,7 +54,7 @@ public class P2PClient {
             System.err.println("Error al obtener información del nodo: " + e.getStatus());
         }
     }
-
+*/
     // Método para cerrar el canal gRPC
     public void shutdown() {
         channel.shutdown();

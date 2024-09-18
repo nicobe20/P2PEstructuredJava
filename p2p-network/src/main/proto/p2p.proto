@@ -8,13 +8,14 @@ service P2PService {
     // RPC para simular el ping entre nodos
     rpc ping (PingRequest) returns (PingResponse);
 
+    // RPC para unirse a la red
+    rpc joinNetwork (JoinRequest) returns (JoinResponse);
+
     // RPC para obtener la información de un nodo
     rpc getNodeInfo (NodeInfoRequest) returns (NodeInfoResponse);
 }
 
-
-//used directly in the ping method in p2pclient
-// Message definitions
+// Message definitions for ping
 message PingRequest {
     string senderNode = 1;
     string receiverNode = 2;
@@ -24,14 +25,23 @@ message PingResponse {
     string status = 1;
 }
 
-// Message definition for node info
-// used to request node information based on node ID
+// Message definition for joining the network
+message JoinRequest {
+    string nodeId = 1; // ID del nodo que intenta unirse
+}
+
+message JoinResponse {
+    string status = 1;        // Estado de la solicitud de unión (éxito, error)
+    string successorId = 2;   // El sucesor asignado al nuevo nodo
+    string predecessorId = 3; // El predecesor asignado al nuevo nodo
+}
+
+// Message definition for node info request
 message NodeInfoRequest {
     string nodeId = 1; // ID del nodo para obtener información
 }
 
 // Message definition for node info response
-// used to respond with node's successor and predecessor
 message NodeInfoResponse {
     string nodeId = 1;        // The ID of the node
     string successorId = 2;   // The ID of the successor node

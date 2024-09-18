@@ -1,5 +1,4 @@
 package com.example.p2pnetwork;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -9,18 +8,27 @@ public class Node {
     private String idNode;
     private Node successor;
     private Node predecessor;
+
+    // This list should be shared among all nodes (static)
     private static List<Node> nodeList = new ArrayList<>();
 
-    // Constructor que asigna un ID aleatorio automáticamente
+    // Constructor that assigns a random ID to the node
     public Node() {
         this.idNode = generateRandomID();
-        this.successor = this;
-        this.predecessor = this;
-        nodeList.add(this); // Registrar el nodo en la red
-        System.out.println("Node with ID: " + this.idNode + " has joined the network.");
+        this.successor = null; // Initially null
+        this.predecessor = null; // Initially null
+        addToNetwork();  // Automatically add node to the network when created
+        System.out.println("Node with ID: " + this.idNode + " has been created.");
     }
 
-    // Generar un ID aleatorio
+    // Method to add a node to the network
+    private void addToNetwork() {
+        if (!nodeList.contains(this)) {
+            nodeList.add(this);
+        }
+    }
+
+    // Generate a random ID for the node
     private String generateRandomID() {
         return UUID.randomUUID().toString();
     }
@@ -45,67 +53,53 @@ public class Node {
         this.predecessor = predecessor;
     }
 
-    // Unir un nuevo nodo a la red y actualizar sucesores/predecesores   aqui hay problemas
-    public void joinNetwork(Node newNode) {
-        if (this.successor == this && this.predecessor == this) {
-            // Si este es el único nodo en la red, el nuevo nodo será su sucesor y predecesor
-            this.successor = newNode;
-            this.predecessor = newNode;
-            newNode.setPredecessor(this);
-            newNode.setSuccessor(this);
+    // Join the network and correctly assign successors and predecessors
+    public void joinNetwork() {
+        if (nodeList.size() == 1) {
+            // This node is the only one in the network, so it becomes its own successor and predecessor
+            this.successor = this;
+            this.predecessor = this;
         } else {
-            Node successorNode = findSuccessor(newNode.getIdNode());
+            // Find the appropriate place for the new node
+            Node successorNode = findSuccessor(this.idNode);
             Node predecessorNode = successorNode.getPredecessor();
 
-            newNode.setPredecessor(predecessorNode);
-            newNode.setSuccessor(successorNode);
-            predecessorNode.setSuccessor(newNode);
-            successorNode.setPredecessor(newNode);
+            // Insert the new node between the predecessor and successor
+            this.setPredecessor(predecessorNode);
+            this.setSuccessor(successorNode);
+            predecessorNode.setSuccessor(this);
+            successorNode.setPredecessor(this);
         }
-        nodeList.add(newNode);
-        System.out.println("Node with ID: " + newNode.getIdNode() + " has joined the network.");
+        addToNetwork();  // Add the node to the network list
+        System.out.println("Node with ID: " + this.idNode + " has joined the network.");
     }
 
-    // Encontrar el sucesor para un nodo con una ID específica
-
+    // Find the successor node based on the node ID
     public Node findSuccessor(String key) {
-    if (this.successor == null || (this.idNode.compareTo(key) < 0 && this.successor.getIdNode().compareTo(key) >= 0) || this.idNode.compareTo(this.successor.getIdNode()) > 0) {
-        return this;
-    } else {
-        return this.successor.findSuccessor(key);
-    }
-}
-
-    // Dejar la red y actualizar sucesores/predecesores
-    public void leaveNetwork() {
-        if (this.successor != null && this.predecessor != null && this.successor != this) {
-            this.successor.setPredecessor(this.predecessor);
-            this.predecessor.setSuccessor(this.successor);
-            nodeList.remove(this);
-            System.out.println("Node with ID: " + this.idNode + " has left the network.");
-        } else {
-            // Si es el único nodo en la red
-            System.out.println("Node with ID: " + this.idNode + " es el único nodo en la red y no puede dejar la red.");
-        }
-    }
-
-    // Mostrar el estado actual de la red
-    public static void printNetworkState() {
-        System.out.println("Current network state:");
         for (Node node : nodeList) {
-            System.out.println("Node ID: " + node.getIdNode() +
-                               " | Predecessor: " + (node.getPredecessor() != null ? node.getPredecessor().getIdNode() : "null") +
-                               " | Successor: " + (node.getSuccessor() != null ? node.getSuccessor().getIdNode() : "null"));
-        }
-    }
-
-    // Encuentra un nodo por su ID
-    public static Node findNodeById(String id) {
-        for (Node node : nodeList) {
-            if (node.getIdNode().equals(id)) {
+            if (node.getIdNode().compareTo(key) > 0) {
                 return node;
             }
         }
-        return null;
+        // If no larger node ID is found, return the first node (wrap-around case)
+        return nodeList.get(0);
+    }
+
+    // Print the current network state
+    public static void printNetworkState() {
+        if (nodeList.isEmpty()) {
+            System.out.println("No nodes in the network.");
+            return;
+        }
+
+        System.out.println("Current network state:");
+        for (Node node : nodeList) {
+            String predecessorId = (node.getPredecessor() != null) ? node.getPredecessor().getIdNode() : "null";
+            String successorId = (node.getSuccessor() != null) ? node.getSuccessor().getIdNode() : "null";
+
+            System.out.println("Node ID: " + node.getIdNode() +
+                               " | Predecessor: " + predecessorId +
+                               " | Successor: " + successorId);
+        }
     }
 }
