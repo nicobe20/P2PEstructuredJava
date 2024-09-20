@@ -49,6 +49,37 @@ public final class P2PServiceGrpc {
     return getPingMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.NodeListRequest,
+      com.example.p2pnetwork.P2PServiceProto.NodeListResponse> getGetNodeListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetNodeList",
+      requestType = com.example.p2pnetwork.P2PServiceProto.NodeListRequest.class,
+      responseType = com.example.p2pnetwork.P2PServiceProto.NodeListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.NodeListRequest,
+      com.example.p2pnetwork.P2PServiceProto.NodeListResponse> getGetNodeListMethod() {
+    io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.NodeListRequest, com.example.p2pnetwork.P2PServiceProto.NodeListResponse> getGetNodeListMethod;
+    if ((getGetNodeListMethod = P2PServiceGrpc.getGetNodeListMethod) == null) {
+      synchronized (P2PServiceGrpc.class) {
+        if ((getGetNodeListMethod = P2PServiceGrpc.getGetNodeListMethod) == null) {
+          P2PServiceGrpc.getGetNodeListMethod = getGetNodeListMethod =
+              io.grpc.MethodDescriptor.<com.example.p2pnetwork.P2PServiceProto.NodeListRequest, com.example.p2pnetwork.P2PServiceProto.NodeListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNodeList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.p2pnetwork.P2PServiceProto.NodeListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.p2pnetwork.P2PServiceProto.NodeListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new P2PServiceMethodDescriptorSupplier("GetNodeList"))
+              .build();
+        }
+      }
+    }
+    return getGetNodeListMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.example.p2pnetwork.P2PServiceProto.JoinRequest,
       com.example.p2pnetwork.P2PServiceProto.JoinResponse> getJoinNetworkMethod;
 
@@ -173,6 +204,13 @@ public final class P2PServiceGrpc {
     }
 
     /**
+     */
+    public void getNodeList(com.example.p2pnetwork.P2PServiceProto.NodeListRequest request,
+        io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.NodeListResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetNodeListMethod(), responseObserver);
+    }
+
+    /**
      * <pre>
      * RPC para unirse a la red
      * </pre>
@@ -201,6 +239,13 @@ public final class P2PServiceGrpc {
                 com.example.p2pnetwork.P2PServiceProto.PingRequest,
                 com.example.p2pnetwork.P2PServiceProto.PingResponse>(
                   this, METHODID_PING)))
+          .addMethod(
+            getGetNodeListMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.example.p2pnetwork.P2PServiceProto.NodeListRequest,
+                com.example.p2pnetwork.P2PServiceProto.NodeListResponse>(
+                  this, METHODID_GET_NODE_LIST)))
           .addMethod(
             getJoinNetworkMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -245,6 +290,14 @@ public final class P2PServiceGrpc {
         io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.PingResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getPingMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getNodeList(com.example.p2pnetwork.P2PServiceProto.NodeListRequest request,
+        io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.NodeListResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetNodeListMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -298,6 +351,13 @@ public final class P2PServiceGrpc {
     }
 
     /**
+     */
+    public com.example.p2pnetwork.P2PServiceProto.NodeListResponse getNodeList(com.example.p2pnetwork.P2PServiceProto.NodeListRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetNodeListMethod(), getCallOptions(), request);
+    }
+
+    /**
      * <pre>
      * RPC para unirse a la red
      * </pre>
@@ -347,6 +407,14 @@ public final class P2PServiceGrpc {
     }
 
     /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.p2pnetwork.P2PServiceProto.NodeListResponse> getNodeList(
+        com.example.p2pnetwork.P2PServiceProto.NodeListRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetNodeListMethod(), getCallOptions()), request);
+    }
+
+    /**
      * <pre>
      * RPC para unirse a la red
      * </pre>
@@ -370,8 +438,9 @@ public final class P2PServiceGrpc {
   }
 
   private static final int METHODID_PING = 0;
-  private static final int METHODID_JOIN_NETWORK = 1;
-  private static final int METHODID_GET_NODE_INFO = 2;
+  private static final int METHODID_GET_NODE_LIST = 1;
+  private static final int METHODID_JOIN_NETWORK = 2;
+  private static final int METHODID_GET_NODE_INFO = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -393,6 +462,10 @@ public final class P2PServiceGrpc {
         case METHODID_PING:
           serviceImpl.ping((com.example.p2pnetwork.P2PServiceProto.PingRequest) request,
               (io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.PingResponse>) responseObserver);
+          break;
+        case METHODID_GET_NODE_LIST:
+          serviceImpl.getNodeList((com.example.p2pnetwork.P2PServiceProto.NodeListRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.p2pnetwork.P2PServiceProto.NodeListResponse>) responseObserver);
           break;
         case METHODID_JOIN_NETWORK:
           serviceImpl.joinNetwork((com.example.p2pnetwork.P2PServiceProto.JoinRequest) request,
@@ -464,6 +537,7 @@ public final class P2PServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new P2PServiceFileDescriptorSupplier())
               .addMethod(getPingMethod())
+              .addMethod(getGetNodeListMethod())
               .addMethod(getJoinNetworkMethod())
               .addMethod(getGetNodeInfoMethod())
               .build();
