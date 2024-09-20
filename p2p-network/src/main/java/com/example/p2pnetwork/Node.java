@@ -74,22 +74,41 @@ public class Node {
                 // Find the appropriate successor and predecessor for the new node
                 Node successorNode = findSuccessor(this.idNode);
                 Node predecessorNode = successorNode.getPredecessor();
-
+    
                 // Set the new node's successor and predecessor
                 this.setSuccessor(successorNode);
                 this.setPredecessor(predecessorNode);
-
-                // Update the predecessor's and successor's links
+    
+                // Notify the predecessor and successor to update their pointers
                 predecessorNode.setSuccessor(this);
                 successorNode.setPredecessor(this);
-
+    
+                // **Broadcast** the new node to all other nodes in the network
+                broadcastNewNodeToNetwork(this);
+    
                 System.out.println("Node joined with predecessor: " + predecessorNode.getIdNode() + " and successor: " + successorNode.getIdNode());
             }
-
-            nodeList.add(this);  // Add the new node to the global list
+    
+            // Add the new node to the global list
+            nodeList.add(this);
             System.out.println("Node " + this.idNode + " has joined the network.");
         }
     }
+    
+    // Broadcast new node to all other nodes in the network
+public void broadcastNewNodeToNetwork(Node newNode) {
+    synchronized (nodeList) {
+        // Notify each node in the network about the new node
+        for (Node node : nodeList) {
+            if (!node.equals(newNode)) {
+                Node.nodeList.add(newNode);  // Add the new node to each node's list
+                System.out.println("Broadcasted new node " + newNode.getIdNode() + " to node " + node.getIdNode());
+            }
+        }
+    }
+}
+
+    
 
     // Find the successor node based on the node ID
     public Node findSuccessor(String key) {
@@ -101,6 +120,21 @@ public class Node {
         // If no larger node ID is found, return the first node (wrap-around case)
         return nodeList.get(0);
     }
+
+    public void leaveNetwork() {
+        synchronized (nodeList) {
+            if (this.successor != this && this.predecessor != this) {
+                // Update the predecessor and successor to bypass the leaving node
+                this.predecessor.setSuccessor(this.successor);
+                this.successor.setPredecessor(this.predecessor);
+            }
+    
+            // Remove the node from the network
+            nodeList.remove(this);
+            System.out.println("Node " + this.idNode + " has left the network.");
+        }
+    }
+    
 
     // Print the current network state
     public static void printNetworkState() {
