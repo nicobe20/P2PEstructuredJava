@@ -14,13 +14,10 @@ import com.example.p2pnetwork.P2PServiceProto.NodeInfoResponse;
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
         try (Scanner scanner = new Scanner(System.in)) {
-            // Create a new node with a random ID
             Node currentNode = new Node();
-
-            // Ask for the port number
             System.out.println("Ingrese el número de puerto para este nodo: ");
             int port = scanner.nextInt();
-            scanner.nextLine(); // Clear the buffer
+            scanner.nextLine(); 
 
             System.out.println("Ingresa la direccion ip o 'localhost' de un nodo boostrap para poder conectarse a la red (si es la creacion de nodo boostrap dejar vacio!!!)");
             String bootstrapAddress = scanner.nextLine();
@@ -34,7 +31,7 @@ public class App {
             server.start();
             System.out.println("gRPC Server iniciado en el puerto " + port);
 
-            //Bootstrap node
+            //Boostrapper node for starting setup
             if (!bootstrapAddress.isEmpty()) {
                 System.out.println("trying to connect to the bootstrapper node on: " + bootstrapAddress);
                 int boostrapperPort = 8080;  
@@ -66,15 +63,12 @@ public class App {
                 currentNode.joinNetwork();
             }
 
-            // Start the client console immediately after server starts
+            
             runClientConsole(currentNode.getIdNode(), port);
-
-            // Keep the server running
             server.awaitTermination();
         }
     }
 
-    // Client Console - move your existing client console logic here
     public static void runClientConsole(String nodeId, int port) {
         try (Scanner scanner = new Scanner(System.in)) {
             ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", port).usePlaintext().build();

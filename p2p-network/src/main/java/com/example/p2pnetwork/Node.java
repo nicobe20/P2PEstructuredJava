@@ -71,15 +71,12 @@ public class Node {
                 this.predecessor = this;
                 System.out.println("Bootstrapper node self-assigned as predecessor and successor.");
             } else {
-                // Find the appropriate successor and predecessor for the new node
+                
                 Node successorNode = findSuccessor(this.idNode);
                 Node predecessorNode = successorNode.getPredecessor();
-    
-                // Set the new node's successor and predecessor
+
                 this.setSuccessor(successorNode);
                 this.setPredecessor(predecessorNode);
-    
-                // Notify the predecessor and successor to update their pointers
                 predecessorNode.setSuccessor(this);
                 successorNode.setPredecessor(this);
     
@@ -88,14 +85,12 @@ public class Node {
     
                 System.out.println("Node joined with predecessor: " + predecessorNode.getIdNode() + " and successor: " + successorNode.getIdNode());
             }
-    
-            // Add the new node to the global list
+
             nodeList.add(this);
             System.out.println("Node " + this.idNode + " has joined the network.");
         }
     }
     
-    // Broadcast new node to all other nodes in the network
 public void broadcastNewNodeToNetwork(Node newNode) {
     synchronized (nodeList) {
         // Notify each node in the network about the new node

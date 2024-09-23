@@ -37,14 +37,11 @@ public class P2PServiceImpl extends P2PServiceGrpc.P2PServiceImplBase {
 
         // Current node joins the network
         currentNode.joinNetwork();
-
-        // Build the response, including the successor and predecessor
         JoinResponse.Builder responseBuilder = JoinResponse.newBuilder()
                 .setStatus("Node " + nodeId + " joined successfully.")
                 .setSuccessorId(currentNode.getSuccessor().getIdNode())
                 .setPredecessorId(currentNode.getPredecessor().getIdNode());
 
-        // Add other nodes to the response
         synchronized (Node.nodeList) {
             for (Node node : Node.nodeList) {
                 responseBuilder.addOtherNodes(node.getIdNode());
@@ -59,7 +56,6 @@ public class P2PServiceImpl extends P2PServiceGrpc.P2PServiceImplBase {
     // Get node info implementation
     @Override
     public void getNodeInfo(NodeInfoRequest request, StreamObserver<NodeInfoResponse> responseObserver) {
-        // Ensure currentNode has valid successor and predecessor
         String successorId = (currentNode.getSuccessor() != null) ? currentNode.getSuccessor().getIdNode() : currentNode.getIdNode();
         String predecessorId = (currentNode.getPredecessor() != null) ? currentNode.getPredecessor().getIdNode() : currentNode.getIdNode();
 
